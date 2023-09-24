@@ -13,6 +13,12 @@ socket.on("disconnect", () => {
 		connect();
 	}, 1_000);
 });
+socket.on("error", () => {
+	getConnection().close();
+	setTimeout(() => {
+		connect();
+	}, 1_000);
+});
 socket.on(
 	"packet",
 	/**
