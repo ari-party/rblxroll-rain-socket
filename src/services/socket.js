@@ -1,8 +1,8 @@
 const WebSocket = require("websocket").w3cwebsocket;
 const { EventEmitter } = require("node:events");
 const events = new EventEmitter();
-const constants = require("../constants");
-const { unmarshall } = require("../utils/packet");
+const constants = require("../constants.js");
+const { unmarshall } = require("../utils/packet.js");
 
 /**
  * @type {WebSocket}

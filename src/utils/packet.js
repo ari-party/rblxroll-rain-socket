@@ -1,11 +1,14 @@
-const { isJsonStructured } = require("./json");
+const { isJsonStructured } = require("./json.js");
 
-const packet = {
+const packetUtils = {
+	// ↓ entire thing breaks without the question mark this rule is indicating
+	// eslint-disable-next-line unicorn/better-regex
 	packetType: (str) => ((str) => (typeof str === "string" ? Number(str) : undefined))(str.match?.(/^\d+(?=\/[a-z]+)?/gi)?.[0]),
 	namespace: (str) => str.match?.(/(?<=^\d+\/)[a-z]+(?=,)/gi)?.[0],
 	ackId: (str) => ((str) => (typeof str === "string" ? Number(str) : undefined))(str.match?.(/(?<=^\d+\/[a-z]+,)\d+/gi)?.[0]),
 	payload: (str) => str.match?.(/\d+\/[a-z]+,\d*(.+)/i)?.[1],
 };
+module.exports = packetUtils;
 
 /**
  * Marshall packet
@@ -31,10 +34,10 @@ module.exports.marshall = (packetType, namespace, ackId, payload) => {
  * @returns {{ packetType: number, namespace: string, ackId: number, payload: object }}
  */
 module.exports.unmarshall = (packetString) => {
-	const packetType = packet.packetType(packetString);
-	const namespace = packet.namespace(packetString);
-	const ackId = packet.ackId(packetString);
-	const payload = ((payload) => (isJsonStructured(payload) ? JSON.parse(payload) : payload))(packet.payload(packetString));
+	const packetType = packetUtils.packetType(packetString);
+	const namespace = packetUtils.namespace(packetString);
+	const ackId = packetUtils.ackId(packetString);
+	const payload = ((payload) => (isJsonStructured(payload) ? JSON.parse(payload) : payload))(packetUtils.payload(packetString));
 
 	return { packetType, namespace, ackId, payload };
 };

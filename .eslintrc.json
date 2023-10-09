@@ -8,7 +8,7 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": ["import"],
+	"plugins": ["import", "unicorn"],
 	"ignorePatterns": ["dist"],
 	"rules": {
 		"linebreak-style": 0,
@@ -17,6 +17,7 @@
 		"no-async-promise-executor": "off",
 		"import/extensions": ["error", "ignorePackages"],
 		"no-unused-vars": "warn",
-		"prefer-const": "warn"
+		"prefer-const": "warn",
+        "unicorn/better-regex": "warn"
 	}
 }
