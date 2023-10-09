@@ -4,6 +4,9 @@
 	"version": "1.0.0",
 	"private": true,
 	"license": "LGPL-3.0-only",
+	"scripts": {
+		"lint": "npx eslint ."
+	},
 	"author": {
 		"name": "Astrid",
 		"url": "https://robertsspaceindustri.es",
@@ -12,6 +15,13 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/robertsspaceindustries/rblxroll-rain-socket.git"
+	},
+	"bugs": {
+		"url": "https://github.com/robertsspaceindustries/rblxroll-rain-socket/issues"
+	},
+	"homepage": "https://github.com/robertsspaceindustries/rblxroll-rain-socket#readme",
+	"engines": {
+		"node": "18.x"
 	},
 	"dependencies": {
 		"express": "^4.18.2",
