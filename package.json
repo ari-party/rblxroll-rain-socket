@@ -6,11 +6,12 @@
 	"license": "LGPL-3.0-only",
 	"author": {
 		"name": "Astrid",
-		"url": "https://www.astrid.exposed",
+		"url": "https://robertsspaceindustri.es",
 		"email": "github@astrid.exposed"
 	},
 	"repository": {
-		"url": "https://github.com/robertsspaceindustries/rblxroll-rain-socket"
+		"type": "git",
+		"url": "git+https://github.com/robertsspaceindustries/rblxroll-rain-socket.git"
 	},
 	"dependencies": {
 		"express": "^4.18.2",
