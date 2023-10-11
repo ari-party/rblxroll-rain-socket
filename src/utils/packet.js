@@ -1,9 +1,7 @@
 const { isJsonStructured } = require("./json.js");
 
 const packetUtils = {
-	// ↓ entire thing breaks without the question mark this rule is indicating
-	// eslint-disable-next-line unicorn/better-regex
-	packetType: (str) => ((str) => (typeof str === "string" ? Number(str) : undefined))(str.match?.(/^\d+(?=\/[a-z]+)?/gi)?.[0]),
+	packetType: (str) => ((str) => (typeof str === "string" ? Number(str) : undefined))(str.match?.(/^\d+/gi)?.[0]),
 	namespace: (str) => str.match?.(/(?<=^\d+\/)[a-z]+(?=,)/gi)?.[0],
 	ackId: (str) => ((str) => (typeof str === "string" ? Number(str) : undefined))(str.match?.(/(?<=^\d+\/[a-z]+,)\d+/gi)?.[0]),
 	payload: (str) => str.match?.(/\d+\/[a-z]+,\d*(.+)/i)?.[1],
